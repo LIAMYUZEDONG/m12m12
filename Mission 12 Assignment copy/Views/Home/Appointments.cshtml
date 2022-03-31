@@ -1,0 +1,65 @@
+﻿@{
+    ViewData["Title"] = "Appointments";
+}
+
+@model List<AppointmentResponse>
+
+<link href="~/css/site.css" rel="stylesheet" />
+<div class="container">
+    <h1>View Appointments</h1>
+    <table class="table table-sm table-striped table-bordered">
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th>Name</th>
+                <th>Size of Group</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Time</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @if (Model?.Count() != 0)
+             {
+                @foreach (var i in Model)
+                 {
+                    <tr>
+                        <td>@i.Date</td>
+                        <td>@i.Name</td>
+                        <td>@i.Size</td>
+                        <td>@i.Email</td>
+                        <td>@i.PhoneNumber</td>
+                     
+                 @if (Int32.Parse(i.Time) < 13 )
+                  {
+                       if (Int32.Parse(i.Time) == 12)
+                        {
+                                <td>@i.Time PM</td>
+                        }
+                        else
+                        {
+                                <td>@i.Time AM</td>
+                        }
+                  }
+                  else
+                  {
+                      <td>@((Int32.Parse(i.Time) - 12).ToString()) PM</td>
+                  }
+                        <td><a class = "btn btn-primary" asp-controller="Home" asp-action="Edit" asp-route-aptid="@i.AppointmentId">Edit</a></td>
+                        <td><a class = "btn btn-primary" asp-controller="Home" asp-action="Delete" asp-route-aptid="@i.AppointmentId">Delete</a></td>
+                    </tr>
+                 }
+             }
+            else
+            {
+                <tr>
+                    <td>Appointments</td>
+                </tr>
+            }
+
+        </tbody>
+
+    </table>
+
+</div>

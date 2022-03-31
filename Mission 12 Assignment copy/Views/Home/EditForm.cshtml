@@ -1,0 +1,54 @@
+﻿@{
+    ViewData["Title"] = "My Tour Appointment";
+}
+
+@model m12.Models.AppointmentResponse;
+<link href="~/css/site.css" rel="stylesheet" />
+<h1>@ViewData["Title"]</h1>
+<center>
+    <p>Edit your temple tour!</p>
+
+    <div>
+        <form method="post">
+            <label asp-for="Date">Date</label>
+            <input asp-for="Date" value="@ViewBag.CurrentDate" /><br />
+            <label asp-for="Time">Time</label>
+
+            <select asp-for="Time">
+                <option>8 AM</option>
+                <option>9 AM</option>
+                <option>10 AM</option>
+                <option>11 AM</option>
+                <option>12 AM</option>
+                <option>1 PM</option>
+                <option>2 PM</option>
+                <option>3 PM</option>
+                <option>4 PM</option>
+                <option>5 PM</option>
+                <option>6 PM</option>
+                <option>7 PM</option>
+                <option>8 PM</option>
+            </select>
+
+
+
+
+            <label asp-for="Name">Name of Group:</label>
+            <input asp-for="Name" /><br /><br />
+
+            <label asp-for="Size">Size of Group:</label>
+            <input asp-for="Size" /><br /><br />
+
+            <label asp-for="Email"> Email:</label>
+            <input asp-for="Email" /><br /><br />
+
+            <label asp-for="PhoneNumber">Phone Number:</label>
+            <input asp-for="PhoneNumber" /><br /><br />
+
+            <div asp-validation-summary="All"></div>
+
+            <button type="submit">Submit Appointment</button>
+
+        </form>
+    </div>
+</center>
